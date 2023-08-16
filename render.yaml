@@ -7,10 +7,7 @@ services:
     startCommand: rsync -a public/ /data/public/ && yarn start
     healthCheckPath: /_health
     autoDeploy: false
-    disk:
-      name: strapi-data
-      mountPath: /data
-      sizeGB: 0.5
+
     envVars:
       - key: NODE_VERSION
         value: ~16.13.0
