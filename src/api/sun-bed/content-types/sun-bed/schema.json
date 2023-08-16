@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sun_beds",
+  "info": {
+    "singularName": "sun-bed",
+    "pluralName": "sun-beds",
+    "displayName": "sunBed"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "cityOfBeds": {
+      "type": "enumeration",
+      "enum": [
+        "Mijas",
+        "Puerto Banús",
+        "Rivera del Sol"
+      ]
+    },
+    "test": {
+      "type": "string"
+    }
+  }
+}
