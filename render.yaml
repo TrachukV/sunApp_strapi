@@ -10,7 +10,6 @@ services:
     disk:
       name: strapi-data
       mountPath: /data
-      sizeGB: 1
     envVars:
       - key: NODE_VERSION
         value: ~16.13.0
