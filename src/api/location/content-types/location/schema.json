@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "locations",
+  "info": {
+    "singularName": "location",
+    "pluralName": "locations",
+    "displayName": "location",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "video": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "rating": {
+      "displayName": "rating",
+      "type": "component",
+      "repeatable": false,
+      "component": "rating.rating"
+    },
+    "cocktails": {
+      "type": "json"
+    },
+    "code": {
+      "type": "text"
+    }
+  }
+}

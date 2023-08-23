@@ -1,6 +1,13 @@
 module.exports = [
   'strapi::errors',
-  'strapi::security',
+  {
+    name: "strapi::security",
+    config: {
+      contentSecurityPolicy: {
+        directives: { "script-src": ["'self'", "'unsafe-inline'", "maps.googleapis.com"] },
+      },
+    },
+  },
   'strapi::cors',
   'strapi::poweredBy',
   'strapi::logger',

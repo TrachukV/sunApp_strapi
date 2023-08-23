@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "location": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::location.location"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "reservationDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "seatsCount": {
+      "type": "integer"
+    },
+    "beachLine": {
+      "type": "enumeration",
+      "enum": [
+        "close_to_the_beach",
+        "centered",
+        "close_to_the_club"
+      ],
+      "default": "close_to_the_beach",
+      "required": true
+    },
+    "price": {
+      "type": "decimal"
+    }
+  }
+}
