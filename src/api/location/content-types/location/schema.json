@@ -43,10 +43,6 @@
     },
     "code": {
       "type": "text"
-    },
-    "address": {
-      "type": "customField",
-      "customField": "plugin::google-maps.location-picker"
     }
   }
 }
