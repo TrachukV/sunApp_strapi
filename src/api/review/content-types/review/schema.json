@@ -4,7 +4,8 @@
   "info": {
     "singularName": "review",
     "pluralName": "reviews",
-    "displayName": "review"
+    "displayName": "review",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,7 +17,7 @@
       "relation": "oneToOne",
       "target": "api::location.location"
     },
-    "users_permissions_user": {
+    "userId": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
