@@ -16,17 +16,16 @@
       "type": "string"
     },
     "phoneNumber": {
-      "type": "string",
-      "default": "city"
+      "type": "string"
     },
     "image": {
       "type": "string"
     },
     "city": {
       "type": "string",
-      "required": true
+      "required": false
     },
-    "userId": {
+    "user": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"

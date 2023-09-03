@@ -47,6 +47,9 @@
     "address": {
       "type": "customField",
       "customField": "plugin::google-maps.location-picker"
+    },
+    "city": {
+      "type": "string"
     }
   }
 }

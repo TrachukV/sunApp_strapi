@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "examples",
+  "info": {
+    "singularName": "example",
+    "pluralName": "examples",
+    "displayName": "example",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "description": {
+      "type": "string"
+    },
+    "count": {
+      "type": "integer"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

@@ -17,7 +17,7 @@
       "relation": "oneToOne",
       "target": "api::location.location"
     },
-    "userId": {
+    "user": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"

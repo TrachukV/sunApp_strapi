@@ -17,7 +17,7 @@
       "relation": "oneToMany",
       "target": "api::wishlist-item.wishlist-item"
     },
-    "userId": {
+    "user": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
