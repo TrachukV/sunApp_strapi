@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-09-03T14:49:52.090Z"
+    "x-generation-date": "2023-09-03T20:10:10.128Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -27,6 +27,10 @@
     {
       "url": "http://localhost:1337/api",
       "description": "Development server"
+    },
+    {
+      "url": "https://strapi-7p11.onrender.com/api",
+      "description": "Remote server"
     }
   ],
   "externalDocs": {
@@ -2806,6 +2810,9 @@
         ],
         "properties": {
           "data": {
+            "required": [
+              "mark"
+            ],
             "type": "object",
             "properties": {
               "location": {
@@ -2833,8 +2840,9 @@
               "description": {
                 "type": "string"
               },
-              "rating": {
-                "$ref": "#/components/schemas/RatingReviewRatingComponent"
+              "mark": {
+                "type": "number",
+                "format": "float"
               }
             }
           }
@@ -2888,6 +2896,9 @@
       },
       "Review": {
         "type": "object",
+        "required": [
+          "mark"
+        ],
         "properties": {
           "location": {
             "type": "object",
@@ -3870,8 +3881,9 @@
           "description": {
             "type": "string"
           },
-          "rating": {
-            "$ref": "#/components/schemas/RatingReviewRatingComponent"
+          "mark": {
+            "type": "number",
+            "format": "float"
           },
           "createdAt": {
             "type": "string",
@@ -3940,21 +3952,6 @@
           },
           "meta": {
             "type": "object"
-          }
-        }
-      },
-      "RatingReviewRatingComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "mark": {
-            "type": "number",
-            "format": "float"
-          },
-          "count": {
-            "type": "integer"
           }
         }
       },
@@ -11567,6 +11564,88 @@
         "operationId": "get/order/getOrderById/{id}"
       }
     },
+    "/orders/getUserOrdersLocations/{id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "operationId": "get//orders/getUserOrdersLocations/{id}"
+      }
+    },
     "/review/getReviewById/{id}": {
       "get": {
         "responses": {
@@ -11657,6 +11736,99 @@
           }
         ],
         "operationId": "get/review/getReviewById/{id}"
+      }
+    },
+    "/review/getReviewRating/{id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "rating": {
+                      "type": "map",
+                      "count": {
+                        "type": "int"
+                      },
+                      "mark": {
+                        "type": "double"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Review"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "operationId": "get/review/getReviewRating/{id}"
       }
     },
     "/user-data/getUserDataByUserId/{id}": {

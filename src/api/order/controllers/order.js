@@ -20,5 +20,17 @@ module.exports = createCoreController('api::order.order', ({ strapi }) => ({
             return error;
         }
     },
+    getUserOrdersLocations: async (ctx, next) => {
+        const { id, } = ctx.params;
+        try {
+            const data = await strapi
+                .service('api::order.order')
+                .getUserOrdersLocations(id)
+
+            ctx.body = data;
+        } catch (error) {
+            return error;
+        }
+    },
 
 }));

@@ -25,11 +25,11 @@
     "description": {
       "type": "text"
     },
-    "rating": {
-      "displayName": "ReviewRating",
-      "type": "component",
-      "repeatable": false,
-      "component": "rating.review-rating"
+    "mark": {
+      "type": "decimal",
+      "required": true,
+      "max": 5,
+      "min": 0
     }
   }
 }

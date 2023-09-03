@@ -20,5 +20,17 @@ module.exports = createCoreController('api::review.review', ({ strapi }) => ({
             return error;
         }
     },
+    getReviewRating: async (ctx, next) => {
+        const { id, } = ctx.params;
+        try {
+            const data = await strapi
+                .service('api::review.review')
+                .getReviewRating(id)
+
+            ctx.body = data;
+        } catch (error) {
+            return error;
+        }
+    },
 
 }));
