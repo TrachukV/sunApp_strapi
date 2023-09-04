@@ -21,7 +21,6 @@ module.exports = createCoreService('api::location.location', ({ strapi }) => ({
             name: data.name,
             description: data.description,
             video: data.video,
-            images: data.images,
             price: data.price,
             cocktails: data.cocktails,
             code: data.code,
@@ -30,6 +29,28 @@ module.exports = createCoreService('api::location.location', ({ strapi }) => ({
             createdAt: data.createdAt,
             updatedAt: data.updatedAt,
             publishedAt: data.publishedAt,
+            rating: {
+              id: data.rating.id,
+              mark: data.rating.mark,
+              count: data.rating.count,
+            },
+            images: {
+              data: data.images.map(image => ({
+                id: image.id,
+                attributes: {
+                  name: image.name,
+                  size: image.size,
+                  url: image.url,
+                  previewUrl: image.previewUrl,
+                  provider: image.provider,
+                  provider_metadata: image.provider_metadata,
+                  folderPath: image.folderPath,
+                  createdAt: image.createdAt,
+                  updatedAt: image.createdAt,
+                }
+              })
+              )
+            },
           },
         },
         meta: {},

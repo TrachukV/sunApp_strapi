@@ -442,8 +442,6 @@ module.exports = {
               "operationId": "get/review/getReviewById/{id}"
             },
           },
-
-
           "/review/getReviewRating/{id}": {
             "get": {
               "responses": {
