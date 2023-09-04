@@ -9,7 +9,7 @@ const { createCoreService } = require('@strapi/strapi').factories;
 module.exports = createCoreService('api::review.review', ({ strapi }) => ({
     getReviewById: async (reviewId, populate) => {
         try {
-            const entries = await strapi.entityService.findOne(
+            const data = await strapi.entityService.findOne(
                 "api::review.review",
                 reviewId,
                 {
@@ -20,13 +20,20 @@ module.exports = createCoreService('api::review.review', ({ strapi }) => ({
 
             const transformedData = {
                 data: {
-                    id: entries.id,
+                    id: data.id,
                     attributes: {
-                        description: entries.description,
-                        createdAt: entries.createdAt,
-                        updatedAt: entries.updatedAt,
-                        publishedAt: entries.publishedAt,
-                        mark: entries.mark,
+                        description: data.description,
+                        createdAt: data.createdAt,
+                        updatedAt: data.updatedAt,
+                        publishedAt: data.publishedAt,
+                        mark: data.mark,
+                        user: {
+                            data: {
+                                id: data.user.id,
+                                attributes: {
+                                }
+                            }
+                        }
                     },
                 },
                 meta: {},

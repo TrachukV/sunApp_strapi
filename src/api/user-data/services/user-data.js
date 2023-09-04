@@ -24,7 +24,6 @@ module.exports = createCoreService('api::user-data.user-data', ({ strapi }) => (
                 data: {
                     id: data.id,
                     attributes: {
-                        name: data.name,
                         lastName: data.lastName,
                         phoneNumber: data.phoneNumber,
                         image: data.image,
@@ -33,7 +32,15 @@ module.exports = createCoreService('api::user-data.user-data', ({ strapi }) => (
                         createdAt: data.createdAt,
                         updatedAt: data.updatedAt,
                         publishedAt: data.publishedAt,
-                        user: data.user
+                        user: {
+                            data: {
+                                id: data.user.id,
+                                attributes: {
+                                    email: data.user.email,
+                                    username: data.user.username,
+                                }
+                            }
+                        }
                     },
                 },
                 meta: {},
