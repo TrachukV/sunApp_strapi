@@ -7,17 +7,20 @@
 const { createCoreService } = require('@strapi/strapi').factories;
 
 module.exports = createCoreService('api::wishlist.wishlist', ({ strapi }) => ({
-    getWishlistById: async (wishlistId, populate) => {
+    getWishlistByUserId: async (userId, populate) => {
         try {
-            const data = await strapi.entityService.findOne(
+            const entries = await strapi.entityService.findMany(
                 'api::wishlist.wishlist',
-                wishlistId,
                 {
+                    filters: {
+                        user: userId,
+                    },
                     populate: populate,
 
                 }
             )
 
+            const data = entries[0];
             const transformedResponse = {
                 data: {
                     id: data.id,

@@ -32,5 +32,18 @@ module.exports = createCoreController('api::review.review', ({ strapi }) => ({
             return error;
         }
     },
+    isUserRateLocation: async (ctx, next) => {
+        const { userId } = ctx.query;
+        const { locationId, } = ctx.query;
 
+        try {
+            const data = await strapi
+                .service('api::review.review')
+                .isUserRateLocation(userId, locationId)
+
+            ctx.body = data;
+        } catch (error) {
+            return error;
+        }
+    },
 }));

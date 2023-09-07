@@ -79,5 +79,35 @@ module.exports = createCoreService('api::location.location', ({ strapi }) => ({
     } catch (err) {
       return err;
     }
-  }
+  },
+  getLocationCrowdiness: async (locationId) => {
+    try {
+      const data = await strapi.entityService.findMany(
+        "api::order.order",
+        {
+          filters: {
+            location: locationId,
+          },
+          populate: '*',
+        }
+      )
+
+      const hourCounts = Array(8).fill(0);
+
+      for (const reservation of data) {
+        const hour = new Date(reservation.reservationDate).getHours();
+
+        if (hour >= 12 && hour <= 19) {
+
+          const slot = hour;
+
+          hourCounts[slot - 12]++;
+        }
+      }
+
+      return hourCounts;
+    } catch (err) {
+      return err;
+    }
+  },
 }));

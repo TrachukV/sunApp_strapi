@@ -11,6 +11,11 @@ module.exports = {
       method: "GET",
       path: "/location/getLocationsCities",
       handler: "location.getLocationsCities"
+    },
+    {
+      method: "GET",
+      path: "/location/getLocationCrowdiness/:id",
+      handler: "location.getLocationCrowdiness"
     }
   ]
 }

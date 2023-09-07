@@ -70,5 +70,36 @@ module.exports = createCoreService('api::review.review', ({ strapi }) => ({
         } catch (err) {
             return err;
         }
+    },
+    isUserRateLocation: async (userId, locationId) => {
+        try {
+            const orders = await strapi.entityService.findMany(
+                "api::order.order",
+                {
+                    filters: {
+                        user: userId,
+                        location: locationId
+                    }
+                }
+            )
+
+            if (orders.length == 0) {
+                throw new Error('Order not found');
+            }
+
+            const reviews = await strapi.entityService.findMany(
+                "api::review.review",
+                {
+                    filters: {
+                        user: userId,
+                        location: locationId
+                    }
+                }
+            )
+
+            return reviews.length > 0;
+        } catch (err) {
+            return err;
+        }
     }
 }));

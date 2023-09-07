@@ -31,4 +31,16 @@ module.exports = createCoreController('api::location.location', ({ strapi }) => 
             return error;
         }
     },
+    getLocationCrowdiness: async (ctx, next) => {
+        const { id, } = ctx.params;
+        try {
+            const data = await strapi
+                .service('api::location.location')
+                .getLocationCrowdiness(id)
+
+            ctx.body = data;
+        } catch (error) {
+            return error;
+        }
+    },
 }));

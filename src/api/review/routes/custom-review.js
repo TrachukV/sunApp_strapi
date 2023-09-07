@@ -11,6 +11,11 @@ module.exports = {
       method: "GET",
       path: "/review/getReviewRating/:id",
       handler: "review.getReviewRating"
+    },
+    {
+      method: "GET",
+      path: "/review/isUserRateLocation",
+      handler: "review.isUserRateLocation"
     }
   ]
 }

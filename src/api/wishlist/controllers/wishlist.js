@@ -7,13 +7,13 @@
 const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::wishlist.wishlist', ({ strapi }) => ({
-    getWishlistById: async (ctx, next) => {
+    getWishlistByUserId: async (ctx, next) => {
         const { id, } = ctx.params;
         const { populate } = ctx.query;
         try {
             const data = await strapi
                 .service('api::wishlist.wishlist')
-                .getWishlistById(id, populate)
+                .getWishlistByUserId(id, populate)
 
             ctx.body = data;
         } catch (error) {

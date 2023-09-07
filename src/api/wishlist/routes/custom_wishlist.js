@@ -4,8 +4,8 @@ module.exports = {
     routes: [
         {
             method: "GET",
-            path: "/wishlist/getWishlistById/:id",
-            handler: "wishlist.getWishlistById"
+            path: "/wishlist/getWishlistByUserId/:id",
+            handler: "wishlist.getWishlistByUserId"
         },
         {
             method: "PUT",

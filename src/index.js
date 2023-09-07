@@ -176,6 +176,96 @@ module.exports = {
               "operationId": "get/location/getLocationsCities"
             },
           },
+          "/location/getLocationCrowdiness/{id}": {
+            "get": {
+              "responses": {
+                "200": {
+                  "description": "OK",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "crowdiness": {
+                            "type": "array",
+                            "items": {
+                              "type": "int"
+                            }
+                          },
+                        }
+                      }
+                    }
+                  }
+                },
+                "400": {
+                  "description": "Bad Request",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/Error"
+                      }
+                    }
+                  }
+                },
+                "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/Error"
+                      }
+                    }
+                  }
+                },
+                "403": {
+                  "description": "Forbidden",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/Error"
+                      }
+                    }
+                  }
+                },
+                "404": {
+                  "description": "Not Found",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/Error"
+                      }
+                    }
+                  }
+                },
+                "500": {
+                  "description": "Internal Server Error",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/Error"
+                      }
+                    }
+                  }
+                }
+              },
+              "tags": [
+                "Location"
+              ],
+              "parameters": [
+                {
+                  "name": "id",
+                  "in": "path",
+                  "description": "",
+                  "deprecated": false,
+                  "required": true,
+                  "schema": {
+                    "type": "number"
+                  }
+                }
+              ],
+              "operationId": "get/location/getLocationCrowdiness/{id}"
+            },
+          },
           "/order/getOrderById/{id}": {
             "get": {
               "responses": {
@@ -535,9 +625,103 @@ module.exports = {
               "operationId": "get/review/getReviewRating/{id}"
             },
           },
-
-
-
+          "/review/isUserRateLocation": {
+            "get": {
+              "responses": {
+                "200": {
+                  "description": "OK",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "isUserRateLocation": {
+                            "type": "bool",
+                          },
+                        }
+                      }
+                    }
+                  }
+                },
+                "400": {
+                  "description": "Bad Request",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/Error"
+                      }
+                    }
+                  }
+                },
+                "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/Error"
+                      }
+                    }
+                  }
+                },
+                "403": {
+                  "description": "Forbidden",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/Error"
+                      }
+                    }
+                  }
+                },
+                "404": {
+                  "description": "Not Found",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/Error"
+                      }
+                    }
+                  }
+                },
+                "500": {
+                  "description": "Internal Server Error",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/Error"
+                      }
+                    }
+                  }
+                }
+              },
+              "tags": [
+                "Review"
+              ],
+              "parameters": [
+                {
+                  "name": "locationId",
+                  "in": "query",
+                  "description": "",
+                  "deprecated": false,
+                  "required": true,
+                  "schema": {
+                    "type": "number"
+                  }
+                },
+                {
+                  "name": "userId",
+                  "in": "query",
+                  "description": "",
+                  "deprecated": false,
+                  "required": true,
+                  "schema": {
+                    "type": "number"
+                  }
+                },
+              ],
+              "operationId": "get/review/isUserRateLocation"
+            },
+          },
           "/user-data/getUserDataByUserId/{id}": {
             "get": {
               "responses": {
@@ -630,7 +814,7 @@ module.exports = {
               "operationId": "get/user-data/getUserDataByUserId/{id}"
             },
           },
-          "/wishlist/getWishlistById/{id}": {
+          "/wishlist/getWishlistByUserId/{id}": {
             "get": {
               "responses": {
                 "200": {
@@ -719,7 +903,7 @@ module.exports = {
                   }
                 }
               ],
-              "operationId": "get/wishlist/getWishlistById/{id}"
+              "operationId": "get/wishlist/getWishlistByUserId/{id}"
             },
           },
           "/wishlist/addItemToWishlist/{id}": {
@@ -849,7 +1033,7 @@ module.exports = {
                     "schema": {
                       "type": "object",
                       "required": [
-                        "username",
+                        "email",
                       ],
                       "properties": {
                         "email": {
