@@ -57,7 +57,9 @@ module.exports = createCoreService('api::wishlist.wishlist', ({ strapi }) => ({
                                             }
                                         }
 
-                                    }
+                                    },
+                                    createdAt: item.createdAt,
+                                    updatedAt: item.createdAt,
                                 }
                             }))
                         }

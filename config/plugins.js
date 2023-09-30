@@ -24,7 +24,7 @@ module.exports = {
       },
       servers: [
         { url: 'http://localhost:1337/api', description: 'Development server' },
-        { url: 'https://strapi-7p11.onrender.com/api', description: 'Remote server' },
+        { url: 'https://strapi-0rdi.onrender.com', description: 'Remote server' },
       ],
       externalDocs: {
         description: 'Find out more',
